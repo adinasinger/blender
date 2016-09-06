@@ -1,5 +1,8 @@
 # menu: 0 - Main Menu, 1 - choose workout focus, 2 - choose exclusions, 3 - enter workout duration (minutes), 4 - enter new exercise
 
+#import class Exercise
+
+
 def include_exercise(focus):
 	#show list of filter criteria (sep function?)
 	#prompt user to enter a workout focus from list
@@ -13,9 +16,9 @@ def exclude_exercise(exclusion):
 	pass
 
 def workout_duration(minutes):
-	#default workout to 30 minutes
+	#default workout to 15 minutes
 	#prompt user for desired workout duration (in minutes)
-	#look up duration for entry in randomized exercise list
+	#look up duration for entry in randomized exercise list - OR can assume 30 sec duration ok for each set, and add or repeat exercises until duration met
 	#use loop/conditional to add durations until greater or equal to arguement (move to next if over, until have checked all in list)
 	#return list of exercises 
 	pass
