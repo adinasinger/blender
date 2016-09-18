@@ -2,13 +2,29 @@
 
 from class_Exercise import Exercise
 from blender_menu import print_menu
+from random import *
 
+exercise_list=[]
+
+def import_exercise_list():
+	Exercise("good mornings", int("1"), "upper body", "back", "standing")
+#file i/o to import rest of exercises?
+
+def randomize_workout(list1):
+	random_list = list1.shuffle()#shuffle returned list of exercises
+	#return shuffled list
+	return random_list
 
 def include_exercise(focus):
-	#show list of filter criteria (sep function?)
-	#prompt user to enter a workout focus from list
+	focus_list=[]
+
+	#show list of filter criteria (sep function? in main?) - upper body, lower body, abs, all
+	#prompt user to enter a workout focus from list (in main)
+	for exercise in exercise_list:
+		if exercise.exercise_type.lower() == focus:
+			focus_list.append(exercise)
 	#return randomized list of exercises matching filter
-	pass
+	print focus_list
 
 def exclude_exercise(exclusion):
 	#show list of filter criteria (sep function?)
@@ -31,11 +47,6 @@ def workout_intensity(int):
 	#return list of exercises 
 	pass
 
-def randomize_workout():
-	#shuffle returned list of exercises
-	#return shuffled list
-	pass
-
 def add_excercise():
 	#prompt user for name of new exerise
 	#check for upper/lowercase
@@ -54,12 +65,7 @@ def del_excercise():
 
 
 def main():
-	exercise_list[]
-	Exercise("good mornings", int("1"), "upper body", "back", "standing")
-#file i/o to import rest of exercises?
-
-
-
+	import_exercise_list()
 	print_menu()
 
 	menu_flag = True
@@ -71,6 +77,8 @@ def main():
 		elif menu_input == 1:
 			print "Choose workout focus (type) from options"
 			#run include_focus()
+			focus_input = raw_input("What kind of workout do you want to focus on? ")
+			include_exercise(focus_input)
 		elif menu_input == 2:
 			print "Choose body position from options"
 			#run exclude() OR just pick body position to filter list
