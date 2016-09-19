@@ -27,30 +27,43 @@ def randomize_workout(list1):
 	#return shuffled list
 	return shuffled_list
 
-def circuit_counter(count_num, category):
-# get count and exercise_type filter
-	pass
-
-def workout_generator():
-#generate random workout with 2 warm-up, 4 circuit, 2 cardio, 2 abs exercises
+def exercise_counter(count_num, category):
+# get count and exercise_type filter, then return random exercised that meet criteria
+	#get randomized exercise list
 	workout = []
 	count = 0
-#get randomized exercise list
 	random_list = randomize_workout(exercise_list)
 
-#while count <=2, get name of exercise if type = warm-up (lowercase)
-	
 	for i in random_list:
-		while count<=2:
-			if i.workout_type.lower() == "warm-up":
+		while count<count_num:
+			if i.workout_type.lower() == category:
 				workout.append(i.name)
 				print i.name
 				count += 1
 			break
-	print workout
-#while count <=4, get name of exercise if type = circuit (lowercase)
-#while count <=2, get name of exercise if type = cardio (lowercase)
-#while count <=2, get name of exercise if type = abs (lowercase)
+
+def workout_generator():
+#generate random workout with 3 warm-up, 6 circuit, 2 cardio, 2 abs exercises
+	
+#while count <3, get name of exercise if type = warm-up (lowercase)
+	
+	print '\033[1m'"\nWarm-up"'\033[0m'
+	exercise_counter(3, "warm-up")
+	print ""
+#while count <6, get name of exercise if type = circuit (lowercase)
+	print '\033[1m'"Circuit"'\033[0m'
+	exercise_counter(6, "circuit")
+	print ""
+#while count <2, get name of exercise if type = cardio (lowercase)
+	print '\033[1m'"Cardio"'\033[0m'
+	exercise_counter(2, "cardio")
+	print ""
+	
+#while count <2, get name of exercise if type = abs (lowercase)
+	print '\033[1m'"Abs"'\033[0m'
+	exercise_counter(2, "abs")
+	print ""
+	
 
 
 def main():
