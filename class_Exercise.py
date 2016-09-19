@@ -1,10 +1,10 @@
 # this class records the filterable info for each exercise
 
 class Exercise(object):
-	def __init__(self, name, diff_level, exercise_type, muscle_group, body_position):
+	def __init__(self, name, workout_type, diff_level, muscle_group="", body_position=""):
 		self.name = name
+		self.workout_type = workout_type
 		self.diff_level = diff_level
-		self.exercise_type = exercise_type
 		self.muscle_group = muscle_group
 		self.body_position = body_position
 
