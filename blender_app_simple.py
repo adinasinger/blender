@@ -1,8 +1,7 @@
-# menu: 0 - Main Menu, 1 - choose workout focus, 2 - choose exclusions, 3 - enter workout duration (minutes), 4 - enter new exercise
 
 from class_Exercise import Exercise
 from blender_menu import print_menu
-from random import *
+from random import shuffle
 import csv
 
 exercise_list = []
@@ -21,18 +20,34 @@ def import_exercise_list(input_file):
       		return exercise_list
 
 
-
-
 def randomize_workout(list1):
-	random_list = list1.shuffle()#shuffle returned list of exercises
+	shuffled_list = list1
+	#shuffle returned list of exercises
+	shuffle(shuffled_list)
 	#return shuffled list
-	return random_list
+	return shuffled_list
+
+def circuit_counter(count_num, category):
+# get count and exercise_type filter
+	pass
 
 def workout_generator():
-	#generate random workout with 2 warm-up, 4 circuit, 2 cardio, 2 abs exercises
-	pass
+#generate random workout with 2 warm-up, 4 circuit, 2 cardio, 2 abs exercises
+	workout = []
+	count = 0
 #get randomized exercise list
+	random_list = randomize_workout(exercise_list)
+
 #while count <=2, get name of exercise if type = warm-up (lowercase)
+	
+	for i in random_list:
+		while count<=2:
+			if i.workout_type.lower() == "warm-up":
+				workout.append(i.name)
+				print i.name
+				count += 1
+			break
+	print workout
 #while count <=4, get name of exercise if type = circuit (lowercase)
 #while count <=2, get name of exercise if type = cardio (lowercase)
 #while count <=2, get name of exercise if type = abs (lowercase)
@@ -41,6 +56,7 @@ def workout_generator():
 def main():
 	#load list of exercises
 	import_exercise_list("Exercise_data.csv")
+	workout_generator()
 
 #print all exercise names in the class entry list
 	# for exercise in exercise_list:
@@ -54,7 +70,8 @@ def main():
 
 
 
-
+#call menu function and branch for each menu selection
+# menu: 0 - Main Menu, 1 - choose workout focus, 2 - choose exclusions, 3 - enter workout duration (minutes), 4 - enter new exercise
 	#display menu
 	# print_menu()
 
