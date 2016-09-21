@@ -33,7 +33,7 @@ def exercise_counter(count_num, category):
 	workout = []
 	count = 0
 	random_list = randomize_workout(exercise_list)
-
+	
 	for i in random_list:
 		while count<count_num:
 			if i.workout_type.lower() == category:
@@ -45,7 +45,8 @@ def exercise_counter(count_num, category):
 
 def set_difficulty():
 	# get diff setting from user, return to variable to pass to generator
-	diff_input = int(raw_input("What level of difficulty would you like today?\nEnter choice (1-4): "))
+	diff_input = (raw_input("What level of difficulty would you like today?\nEnter choice (1-4): "))
+
 	return diff_input
 
 def set_circuit_count():
@@ -56,10 +57,35 @@ def set_circuit_count():
 def workout_generator(diff, num1):
 #default generates random workout with 3 warm-up, 6 circuit, 2 cardio, 2 abs exercises at all diff levels
 	
+#difficulty setting creates new list of exercises to pass to exercise counter
+	diff1 = []
+	diff2 = []
+	diff3 = []
+	diff4 = []
+
+	
+	for i in exercise_list:
+		# print i.diff_level
+		# print i.diff_level
+		# print diff
+		# print type(i.diff_level)
+		# print type(diff)
+		if i.diff_level <= diff:
+		 	print i.diff_level
+			# diff1.append(i.name)
+			# print diff1
+			
+"""
+
 #while count <3, get name of exercise if type = warm-up (lowercase)
 	print '\033[1m'"\nWarm-up"'\033[0m'
 	exercise_counter(3, "warm-up")
 	print ""
+
+	# for i in range(num1-1):
+	# 	print circuit_choice
+#	if x in set
+
 #while count <6, get name of exercise if type = circuit (lowercase)
 	print '\033[1m'"Circuit"'\033[0m'
 	exercise_counter(6, "circuit")
@@ -73,11 +99,11 @@ def workout_generator(diff, num1):
 	print '\033[1m'"Abs"'\033[0m'
 	exercise_counter(2, "abs")
 	print ""
-	
-	print "Enter 0 for Main Menu or 5 to Exit"
 
+	print "Enter 0 for Main Menu or 5 to Exit"
+"""
 def main():
-	diff_choice = 4
+	diff_choice = "1"
 	circuit_choice = 1
 	#load list of exercises
 	import_exercise_list("Exercise_data.csv")
@@ -96,17 +122,17 @@ def main():
 		if menu_input == 0:
 			print_menu()
 		elif menu_input == 1:
-			print "\nCurrent Settings - Difficulty: %i, # Circuits: %i" % (diff_choice, circuit_choice)
+			print "\nCurrent Settings - Difficulty: %s, # Circuits: %i" % (diff_choice, circuit_choice)
 			workout_generator(diff=diff_choice,num1=circuit_choice)
 		elif menu_input == 2:
-			print "\nCurrent Difficulty Setting: %i \n" % (diff_choice)
-			set_difficulty()
-			diff_choice = diff_input
-			print "\nNew Difficulty Setting: %i \n" % (diff_choice)
+			print "\nCurrent Difficulty Setting: %s \n" % (diff_choice)
+			diff_choice = set_difficulty()
+			#check to make sure input is in proper range (1-4), else return error and prompt again
+			print "\nNew Difficulty Setting: %s \n" % (diff_choice)
 		elif menu_input == 3:
 			print "\nCurrent Circuit Number Setting: %i \n" % (circuit_choice)
-			set_circuit_count()
-			circuit_choice = circuit_input
+			circuit_choice = set_circuit_count()
+			#check to make sure input is in proper range (1-3), else return error and prompt again			
 			print "\nNew Circuit Number Setting: %i \n" % (circuit_choice)
 		elif menu_input == 4:
 			print "Add a new exercise (include name, type, difficulty level, muscle group worked, and body position) "
