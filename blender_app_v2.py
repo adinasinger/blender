@@ -27,12 +27,12 @@ def randomize_workout(list1):
 	#return shuffled list
 	return shuffled_list
 
-def exercise_counter(count_num, category):
+def exercise_counter(list2,count_num, category):
 # get count and exercise_type filter, then return random exercised that meet criteria
 	#get randomized exercise list
 	workout = []
 	count = 0
-	random_list = randomize_workout(exercise_list)
+	random_list = randomize_workout(list2)
 	
 	for i in random_list:
 		while count<count_num:
@@ -58,28 +58,18 @@ def workout_generator(diff, num1):
 #default generates random workout with 3 warm-up, 6 circuit, 2 cardio, 2 abs exercises at all diff levels
 	
 #difficulty setting creates new list of exercises to pass to exercise counter
-	diff1 = []
-	diff2 = []
-	diff3 = []
-	diff4 = []
+	diff_filtered_list = []
 
-	
+#make sure type is "str" because csv data is sting and not int even when a number
 	for i in exercise_list:
-		# print i.diff_level
-		# print i.diff_level
-		# print diff
-		# print type(i.diff_level)
-		# print type(diff)
 		if i.diff_level <= diff:
-		 	print i.diff_level
-			# diff1.append(i.name)
-			# print diff1
+		 	#print i.diff_level
+			diff_filtered_list.append(i)
+	#print diff_filtered_list
 			
-"""
-
 #while count <3, get name of exercise if type = warm-up (lowercase)
 	print '\033[1m'"\nWarm-up"'\033[0m'
-	exercise_counter(3, "warm-up")
+	exercise_counter(diff_filtered_list,3, "warm-up")
 	print ""
 
 	# for i in range(num1-1):
@@ -88,20 +78,20 @@ def workout_generator(diff, num1):
 
 #while count <6, get name of exercise if type = circuit (lowercase)
 	print '\033[1m'"Circuit"'\033[0m'
-	exercise_counter(6, "circuit")
+	exercise_counter(diff_filtered_list,6, "circuit")
 	print ""
 #while count <2, get name of exercise if type = cardio (lowercase)
 	print '\033[1m'"Cardio"'\033[0m'
-	exercise_counter(2, "cardio")
+	exercise_counter(diff_filtered_list,2, "cardio")
 	print ""
 	
 #while count <2, get name of exercise if type = abs (lowercase)
 	print '\033[1m'"Abs"'\033[0m'
-	exercise_counter(2, "abs")
+	exercise_counter(diff_filtered_list,2, "abs")
 	print ""
 
 	print "Enter 0 for Main Menu or 5 to Exit"
-"""
+
 def main():
 	diff_choice = "1"
 	circuit_choice = 1
